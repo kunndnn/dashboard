@@ -1,8 +1,8 @@
-export const sidebar = {
+export const SIDEBAR = {
   DASHBOARD: "Dashboard",
 };
 
-export const auth = {
+export const AUTH = {
   SIGN_IN: "Sign in !",
   REMEMBER_ME: "Remember me",
   FORGOT_PASS: "Forgot password?",
@@ -12,6 +12,6 @@ export const auth = {
   LOGIN_HERE: "Login here",
 };
 
-export const common = {
+export const COMMON = {
   NO_DATA: "No Data Found",
 };

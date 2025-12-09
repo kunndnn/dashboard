@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import CommonInput from "../../components/CommonInput";
 import CommonButton from "../../components/CommonButton";
-import { auth } from "../../constants";
+import { AUTH } from "../../constants";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Login() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Heading */}
                     <h2 className="text-2xl font-semibold text-gray-900">
-                        {auth.SIGN_IN}
+                        {AUTH.SIGN_IN}
                     </h2>
                     {/* Email */}
                     <CommonInput
@@ -46,13 +46,13 @@ export default function Login() {
                                 type="checkbox"
                                 className="h-4 w-4 rounded border-gray-300 focus:ring-blue-500"
                             />
-                            {auth.REMEMBER_ME}
+                            {AUTH.REMEMBER_ME}
                         </label>
                         <Link
                             to="/forgot-password"
                             className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
                         >
-                            {auth.FORGOT_PASS}
+                            {AUTH.FORGOT_PASS}
                         </Link>
                     </div>
 
@@ -61,12 +61,12 @@ export default function Login() {
 
                     {/* Register */}
                     <p className="text-sm text-gray-600 text-center">
-                        {auth.NOT_REGISTERED}
+                        {AUTH.NOT_REGISTERED}
                         <Link
                             to="/dashboard/register"
                             className="text-blue-600 hover:text-blue-800 hover:underline"
                         >
-                            {auth.CREATE_ACCOUNT}
+                            {AUTH.CREATE_ACCOUNT}
                         </Link>
                     </p>
                 </form>

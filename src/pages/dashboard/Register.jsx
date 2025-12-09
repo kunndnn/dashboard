@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import CommonInput from "../../components/CommonInput";
 import CommonButton from "../../components/CommonButton";
-import { auth } from "../../constants";
+import { AUTH } from "../../constants";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Register() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Heading */}
                     <h2 className="text-2xl font-semibold text-gray-900">
-                        {auth.CREATE_ACCOUNT}
+                        {AUTH.CREATE_ACCOUNT}
                     </h2>
 
                     {/* Full Name */}
@@ -68,12 +68,12 @@ export default function Register() {
 
                     {/* Already have account */}
                     <p className="text-sm text-gray-600 text-center">
-                        {auth.ALREADY_ACCOUNT}
+                        {AUTH.ALREADY_ACCOUNT}
                         <Link
                             to="/dashboard/login"
                             className="text-blue-600 hover:text-blue-800 hover:underline"
                         >
-                            {auth.LOGIN_HERE}
+                            {AUTH.LOGIN_HERE}
                         </Link>
                     </p>
                 </form>

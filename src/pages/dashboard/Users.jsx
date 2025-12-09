@@ -1,6 +1,6 @@
 import CommonButton from '../../components/CommonButton';
 import CommonInput from '../../components/CommonInput'
-import { common } from '../../constants';
+import { COMMON } from '../../constants';
 const Users = () => {
     const columns = ['Sr.', 'Name', 'Email', 'Role'];
 
@@ -62,7 +62,7 @@ const Users = () => {
                                     colSpan={columns.length + 1}
                                     className="text-center py-6 text-gray-500"
                                 >
-                                    {common.NO_DATA}
+                                    {COMMON.NO_DATA}
                                 </td>
                             </tr>
                         )}
