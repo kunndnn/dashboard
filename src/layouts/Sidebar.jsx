@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { X, Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
-import CommonButton from "../components/CommonButton";
+import { sidebar } from '../constants'
 
 const sidebar = [
     { url: '/dashboard', label: "Overview" },
@@ -56,7 +56,7 @@ const Sidebar = ({ open, setOpen }) => {
                             <X size={26} />
                         </button>
 
-                        <h2 className="text-xl font-bold mb-5">Dashboard</h2>
+                        <h2 className="text-xl font-bold mb-5">{sidebar.DASHBOARD}</h2>
 
                         <nav className="flex flex-col gap-3">
                             {sidebar.map((item, i) => (

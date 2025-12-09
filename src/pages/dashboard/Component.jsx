@@ -46,7 +46,8 @@ const Component = () => {
                     {activeTab === "Profile" && <p>You’re on the Profile tab.</p>}
                     {activeTab === "Settings" && <p>You’re on the Settings tab.</p>}
                 </div>
-            </div>        </>
+            </div>
+        </>
     )
 }
 
