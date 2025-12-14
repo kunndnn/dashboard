@@ -9,8 +9,8 @@ import {
     Legend
 } from "chart.js";
 
-import Graph from "../../components/Graph";
-import StatsCard from "../../components/StatsCard";
+import Graph from "@/components/dashboard/Graph";
+import StatsCard from "@/components/dashboard/StatsCard";
 
 ChartJS.register(
     CategoryScale,

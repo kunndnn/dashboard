@@ -1,9 +1,9 @@
 import { useState } from "react"
-import CommonEditor from "../../components/CommonEditor"
-import { Loader } from "../../components/Loader"
-import CommonSelect from "../../components/CommonSelect"
-import CommonConfirm from '../../components/CommonConfirm'
-import { Tabs } from "../../components/Tabs"
+import CommonEditor from "@/components/ui/CommonEditor"
+import { Loader } from "@/components/ui/Loader"
+import CommonSelect from "@/components/ui/CommonSelect"
+import CommonConfirm from '@/components/ui/CommonConfirm'
+import { Tabs } from "@/components/ui/Tabs"
 
 const Component = () => {
     const [value, setValue] = useState("")

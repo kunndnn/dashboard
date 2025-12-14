@@ -1,4 +1,4 @@
-import { fallbackImage } from "../utils/constants"
+import { fallbackImage } from "@/utils/constants"
 
 const CommonImage = ({ src, alt, className }) => {
     return (

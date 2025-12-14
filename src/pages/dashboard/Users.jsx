@@ -1,6 +1,6 @@
-import CommonButton from '../../components/CommonButton';
-import CommonInput from '../../components/CommonInput'
-import { COMMON } from '../../constants';
+import CommonButton from '@/components/ui/CommonButton';
+import CommonInput from '@/components/ui/CommonInput'
+import { COMMON } from '@/constants';
 const Users = () => {
     const columns = ['Sr.', 'Name', 'Email', 'Role'];
 

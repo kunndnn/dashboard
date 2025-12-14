@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import CommonButton from '../components/CommonButton'
+import CommonButton from '@/components/ui/CommonButton'
 const NotFound = () => {
     const navigate = useNavigate()
     return (

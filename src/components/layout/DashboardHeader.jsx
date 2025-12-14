@@ -1,8 +1,8 @@
 import { Menu } from "lucide-react";
-import CommonButton from "../../CommonButton";
+import CommonButton from "@/components/ui/CommonButton";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ setOpen }) {
+export default function DashboardHeader({ setOpen }) {
     const navigate = useNavigate();
 
     return (

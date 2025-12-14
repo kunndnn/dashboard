@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import CommonInput from "../../components/CommonInput";
-import CommonButton from "../../components/CommonButton";
-import CommonCard from "../../components/CommonCard";
-import CommonImage from "../../components/CommonImage";
+import CommonInput from "@/components/ui/CommonInput";
+import CommonButton from "@/components/ui/CommonButton";
+import CommonCard from "@/components/ui/CommonCard";
+import CommonImage from "@/components/ui/CommonImage";
 import { Eye, EyeOff } from "lucide-react";
 
 const Profile = () => {
