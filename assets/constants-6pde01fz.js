@@ -1,1 +1,0 @@
-const a={DASHBOARD:"Dashboard"},e={SIGN_IN:"Sign in !",REMEMBER_ME:"Remember me",FORGOT_PASS:"Forgot password?",NOT_REGISTERED:"Not registered?",CREATE_ACCOUNT:"Create an account",ALREADY_ACCOUNT:"Already have an account?",LOGIN_HERE:"Login here"},o={NO_DATA:"No Data Found"};export{e as A,o as C,a as S};
