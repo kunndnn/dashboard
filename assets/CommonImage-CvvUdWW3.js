@@ -1,0 +1,1 @@
+import{j as t}from"./index-MBbTVV3k.js";const e="/dashboard/assets/default-BTYpdRDd.png",n=({src:r,alt:s,className:a})=>t.jsx("img",{src:r,alt:s,className:a,onError:o=>o.currentTarget.src=e});export{n as C};

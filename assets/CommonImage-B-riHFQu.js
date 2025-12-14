@@ -1,1 +1,0 @@
-import{j as t}from"./index-CqyftlUp.js";const e="/dashboard/assets/default-BTYpdRDd.png",n=({src:r,alt:s,className:a})=>t.jsx("img",{src:r,alt:s,className:a,onError:o=>o.currentTarget.src=e});export{n as C};
