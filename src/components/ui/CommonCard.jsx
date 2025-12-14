@@ -1,15 +1,22 @@
-export default function CommonCard({ children, className = "" }) {
+export default function CommonCard({ title, children, className = "" }) {
     return (
-        <div
-            className={`bg-white shadow-md rounded-xl p-4 border border-gray-200 dark:bg-gray-900 ${className}`}
-        >
-            {children}
-        </div>
-    );
+      <div className={`bg-white shadow rounded-lg p-6 ${className}`}>
+          {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
+          {children}
+      </div>
+  );
 }
 
-// usage
-// <CommonCard className="max-w-sm">
-//   <h2 className="text-lg font-bold">Card Title</h2>
-//   <p>This is card content.</p>
-// </CommonCard>
+/**
+ * CommonCard
+ * 
+ * Usage:
+ * <CommonCard title="Card Title">
+ *   <p>Card content goes here.</p>
+ * </CommonCard>
+ * 
+ * Props:
+ * - title: string (optional)
+ * - children: ReactNode (content)
+ * - className: string
+ */

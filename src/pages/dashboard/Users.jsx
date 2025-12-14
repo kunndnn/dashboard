@@ -1,8 +1,11 @@
 import CommonButton from '@/components/ui/CommonButton';
 import CommonInput from '@/components/ui/CommonInput'
-import { COMMON } from '@/constants';
+import CommonTable from '@/components/ui/CommonTable';
+import CommonBadge from '@/components/ui/CommonBadge';
+import CommonBreadcrumb from '@/components/ui/CommonBreadcrumb';
+
 const Users = () => {
-    const columns = ['Sr.', 'Name', 'Email', 'Role'];
+    const columns = ['Sr.', 'Name', 'Email', 'Role', 'Actions'];
 
     const data = [
         { sr: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
@@ -11,66 +14,66 @@ const Users = () => {
         { sr: 4, name: "Michael Lee", email: "michael@example.com", role: "User" },
     ];
 
-    return (
+    const getRoleBadgeVariant = (role) => {
+        switch (role) {
+            case 'Admin': return 'primary';
+            case 'Editor': return 'warning';
+            case 'User': return 'success';
+            default: return 'gray';
+        }
+    };
+
+    const renderRow = (row, index) => (
         <>
-            <div className="overflow-x-auto bg-white dark:bg-black shadow rounded-xl border border-gray-200 dark:border-gray-800">
-                <div className="flex justify-end p-3 dark:border-white border-t border-l border-r">
-                    <CommonInput
-                        type="search"
-                        placeholder="Search user..."
-                        wrapperClass="max-w-xs"
-                    />
+            <td className="px-6 py-4 dark:text-gray-300 font-medium">{row.sr}</td>
+            <td className="px-6 py-4 dark:text-gray-300">
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">
+                        {row.name.charAt(0)}
+                    </div>
+                    {row.name}
                 </div>
-
-                <table className="min-w-full text-left">
-
-                    {/* Table Head */}
-                    <thead>
-                        <tr className="bg-gray-100 text-gray-700 dark:bg-gray-600 dark:text-gray-200 uppercase text-sm">
-                            {columns.map((col, i) => (
-                                <th key={i} className="px-6 py-3 font-semibold ">
-                                    {col}
-                                </th>
-                            ))}
-                            <th className="px-6 py-3 font-semibold">Actions</th>
-                        </tr>
-                    </thead>
-
-                    {/* Table Body */}
-                    <tbody>
-                        {data.length > 0 ? (
-                            data.map((row, index) => (
-                                <tr
-                                    key={index}
-                                    className="border-t dark:border-white hover:bg-gray-50 dark:hover:bg-gray-700 transition dark:bg-gray-900"
-                                >
-                                    <td className="px-6 py-4 dark:text-white">{row.sr}</td>
-                                    <td className="px-6 py-4 dark:text-white">{row.name}</td>
-                                    <td className="px-6 py-4 dark:text-white">{row.email}</td>
-                                    <td className="px-6 py-4 dark:text-white">{row.role}</td>
-
-                                    {/* Action Buttons */}
-                                    <td className="px-6 py-4 flex gap-3">
-                                        <CommonButton type='button' label='Edit' className='px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600' variant='' />
-                                        <CommonButton type='button' label='Delete' className='px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600' variant='danger' />
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td
-                                    colSpan={columns.length + 1}
-                                    className="text-center py-6 text-gray-500"
-                                >
-                                    {COMMON.NO_DATA}
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-
-                </table>
-            </div>
+            </td>
+            <td className="px-6 py-4 dark:text-gray-300">{row.email}</td>
+            <td className="px-6 py-4">
+                <CommonBadge label={row.role} variant={getRoleBadgeVariant(row.role)} />
+            </td>
+            <td className="px-6 py-4 flex gap-2">
+                <CommonButton
+                    type='button'
+                    label='Edit'
+                    className='px-3 py-1 text-xs'
+                />
+                <CommonButton
+                    type='button'
+                    label='Delete'
+                    className='px-3 py-1 text-xs'
+                    variant='danger'
+                />
+            </td>
         </>
+    );
+
+    return (
+        <div className="space-y-6">
+            <CommonBreadcrumb />
+
+            <div className="flex justify-between items-center bg-white dark:bg-black p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white">All Users</h2>
+                <CommonInput
+                    type="search"
+                    placeholder="Search user..."
+                    wrapperClass="max-w-xs"
+                    className="!py-2"
+                />
+            </div>
+
+            <CommonTable
+                columns={columns}
+                data={data}
+                renderRow={renderRow}
+            />
+        </div>
     );
 };
 

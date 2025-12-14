@@ -26,22 +26,22 @@ export default function CommonConfirm({
     );
 }
 
-
-// usage
-//   const [open, setOpen] = useState(false);
-// <button
-//         className="px-4 py-2 bg-red-600 text-white rounded-lg"
-//         onClick={() => setOpen(true)}
-//       >
-//         Delete Item
-//       </button>
-//       <CommonConfirm
-//         open={open}
-//         title="Delete this item?"
-//         message="This action cannot be undone."
-//         onCancel={() => setOpen(false)}
-//         onConfirm={() => {
-//           console.log("Deleted!");
-//           setOpen(false);
-//         }}
-//       />
+/**
+ * CommonConfirm
+ * 
+ * Usage:
+ * <CommonConfirm 
+ *   open={isOpen} 
+ *   title="Delete Item" 
+ *   message="Are you sure?" 
+ *   onConfirm={handleConfirm} 
+ *   onCancel={() => setIsOpen(false)} 
+ * />
+ * 
+ * Props:
+ * - open: boolean (visibility)
+ * - title: string (default: "Are you sure?")
+ * - message: string (default: "Do you want to continue?")
+ * - onConfirm: function
+ * - onCancel: function
+ */

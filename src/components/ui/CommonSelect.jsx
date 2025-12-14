@@ -1,54 +1,52 @@
-export default function CommonSelect({ label, options, onChange }) {
-  return (
-    <div>
-      {label && (
-        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
-          {label}
-        </label>
-      )}
+import { ChevronDown } from "lucide-react";
 
-      <select
-        className="
-          w-full px-3 py-2 rounded-lg border
-          bg-white text-gray-900 border-gray-300
-          dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600
-          focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
-        "
-        onChange={(e) => onChange(e.target.value)}
-      >
-        {options.map((o) => (
-          <option
-            key={o.value}
-            value={o.value}
-            className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800"
+export default function CommonSelect({ label, options, value, onChange, className = "" }) {
+  return (
+      <div className={`w-full ${className}`}>
+        {label && (
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 transition-colors">
+            {label}
+          </label>
+        )}
+        <div className="relative">
+          <select
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 appearance-none transition-all duration-200 cursor-pointer"
           >
-            {o.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+            <option value="" disabled>Select an option</option>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+            <ChevronDown size={16} />
+          </div>
+        </div>
+      </div>
+    );
 }
 
-
-
-// usage
-//  const [country, setCountry] = useState("");
-
-//   const countryOptions = [
-//     { value: "india", label: "India" },
-//     { value: "usa", label: "USA" },
-//     { value: "uk", label: "United Kingdom" },
-//   ];
-
-//   return (
-//     <div className="p-10">
-//       <CommonSelect
-//         label="Select Country"
-//         options={countryOptions}
-//         onChange={setCountry}
-//       />
-
-//       <p className="mt-4">Selected country: {country}</p>
-//     </div>
-//   );
+/**
+ * CommonSelect
+ * 
+ * Usage:
+ * <CommonSelect 
+ *   label="Choose Role" 
+ *   value={role} 
+ *   onChange={setRole} 
+ *   options={[
+ *     { value: 'admin', label: 'Admin' },
+ *     { value: 'user', label: 'User' }
+ *   ]} 
+ * />
+ * 
+ * Props:
+ * - label: string (optional)
+ * - value: string | number
+ * - onChange: function (value) => void
+ * - options: Array<{ value: string|number, label: string }>
+ * - className: string
+ */

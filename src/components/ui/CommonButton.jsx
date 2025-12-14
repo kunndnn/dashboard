@@ -35,20 +35,24 @@ export default function CommonButton({
 }
 
 
-// usage
-//  <CommonButton
-//         label="Save"
-//         variant="primary"
-//         onClick={() => alert("Saved!")}
-//       />
-
-//       <CommonButton
-//         label="Cancel"
-//         variant="secondary"
-//       />
-
-//       <CommonButton
-//         label="Delete"
-//         variant="danger"
-//         loading={true}
-//       />
+/**
+ * CommonButton
+ * 
+ * Usage:
+ * <CommonButton 
+ *   label="Save" 
+ *   onClick={() => console.log('Saved')} 
+ *   variant="primary" 
+ *   loading={isLoading}
+ * />
+ * 
+ * Props:
+ * - label: string (default: "Button")
+ * - onClick: function
+ * - type: "button" | "submit" | "reset" (default: "button")
+ * - variant: "primary" | "secondary" | "danger" | "white" | "black" | "none" (default: "primary")
+ * - loading: boolean (default: false)
+ * - disabled: boolean (default: false)
+ * - className: string
+ * - children: ReactNode (optional, overrides label)
+ */

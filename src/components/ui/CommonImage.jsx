@@ -12,3 +12,22 @@ const CommonImage = ({ src, alt, className }) => {
 }
 
 export default CommonImage
+
+/**
+ * CommonImage
+ * 
+ * Usage:
+ * <CommonImage 
+ *   src="https://example.com/image.jpg" 
+ *   alt="Description" 
+ *   className="w-full h-auto rounded" 
+ * />
+ * 
+ * Props:
+ * - src: string
+ * - alt: string
+ * - className: string
+ * 
+ * Behavior:
+ * - Automatically falls back to a default image (from constants) if the src fails to load.
+ */
