@@ -26,7 +26,7 @@ export default function Register() {
                         label="Full Name"
                         type="text"
                         placeholder="John Doe"
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
@@ -35,7 +35,7 @@ export default function Register() {
                         label="Email address"
                         type="email"
                         placeholder="example@company.com"
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
@@ -45,7 +45,7 @@ export default function Register() {
                         type="password"
                         placeholder="••••••••"
                         showPasswordToggle
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
@@ -55,7 +55,7 @@ export default function Register() {
                         type="password"
                         placeholder="••••••••"
                         showPasswordToggle
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
@@ -63,7 +63,7 @@ export default function Register() {
                     <CommonButton
                         type="submit"
                         label="Create Account"
-                        className="w-full py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium shadow-sm hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition"
+                        className="w-full py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition"
                     />
 
                     {/* Already have account */}

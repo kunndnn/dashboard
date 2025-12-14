@@ -4,6 +4,7 @@ const variants = {
   danger: "bg-red-600 hover:bg-red-700 text-white",
   white: "bg-white hover;bg-gray-700 text-black",
   black: "bg-black hover;bg-gray-700 text-white",
+  none:""
 };
 
 export default function CommonButton({
@@ -14,6 +15,7 @@ export default function CommonButton({
   loading = false,
   className = "",
   disabled = false,
+  children
 }) {
   return (
     <button
@@ -27,7 +29,7 @@ export default function CommonButton({
         ${className}
       `}
     >
-      {loading ? "Please wait..." : label}
+      {loading ? "Please wait..." : children || label}
     </button>
   );
 }

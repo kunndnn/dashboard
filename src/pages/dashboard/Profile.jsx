@@ -112,17 +112,17 @@ const Profile = () => {
                         />
 
                         {/* Eye Toggle Button */}
-                        <button
-                            type="button"
+                        <CommonButton
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-9 text-gray-600 cursor-pointer"
+                            className="absolute right-1 top-6 text-gray-600 cursor-pointer"
+                            variant="none"
                         >
                             {finalPasswordState ? (
-                                <EyeOff size={20} />
-                            ) : (
                                 <Eye size={20} />
+                            ) : (
+                                <EyeOff size={20} />
                             )}
-                        </button>
+                        </CommonButton>
                     </div>
 
                     <CommonButton

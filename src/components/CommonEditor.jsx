@@ -5,7 +5,6 @@ export default function CommonEditor({ className, value, setValue, config = {
     uploader: { insertImageAsBase64URI: true },
     height: 400
 } }) {
-    console.log('render', { value });
     return (
         <div className={className}>
             <JoditEditor

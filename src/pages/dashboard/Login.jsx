@@ -25,7 +25,7 @@ export default function Login() {
                         label="Email address"
                         type="email"
                         placeholder="example@company.com"
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
@@ -35,7 +35,7 @@ export default function Login() {
                         type="password"
                         placeholder="••••••••"
                         showPasswordToggle
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2.5 border-gray-300 bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
 
