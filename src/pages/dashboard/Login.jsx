@@ -1,15 +1,23 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, data } from "react-router-dom";
 import CommonInput from "@/components/ui/CommonInput";
 import CommonButton from "@/components/ui/CommonButton";
+import { post } from '../../api.js'
 import { AUTH } from "../../constants";
+import { useState } from "react";
 
 export default function Login() {
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({ email: '', password: '' })
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/dashboard");
+        // navigate("/dashboard");
     };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value })
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-neutral-100 px-4">
@@ -24,19 +32,23 @@ export default function Login() {
                     <CommonInput
                         label="Email address"
                         type="email"
+                        name="email"
                         placeholder="example@company.com"
                         className="w-full px-3 py-2.5 bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
-                        required
+                        value={formData.email}
+                        onChange={(e) => handleChange(e)}
                     />
 
                     {/* Password */}
                     <CommonInput
                         label="Password"
                         type="password"
+                        name="password"
                         placeholder="••••••••"
                         showPasswordToggle
                         className="w-full px-3 py-2.5 border-gray-300 bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
-                        required
+                        value={formData.password}
+                        onChange={(e) => handleChange(e)}
                     />
 
                     {/* Remember + Forgot */}
