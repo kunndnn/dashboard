@@ -5,7 +5,7 @@ const StatsCard = ({ title, value, color }) => {
 
             {/* Dynamic color using inline style (best for Tailwind restrictions) */}
             <p
-                className="text-3xl font-semibold mt-2"
+                className="text-lg xl:text-3xl font-semibold mt-2"
                 style={{ color: color }}
             >
                 {value}

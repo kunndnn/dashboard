@@ -71,6 +71,9 @@ const DashboardHome = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
                 <Graph title="User Growth" type="line" data={lineData} />
                 <Graph title="Daily Sales" type="bar" data={barData} />
+                <Graph title="Daily Sales" type="bar" data={barData} />
+                <Graph title="Daily Sales" type="bar" data={barData} />
+                <Graph title="Daily Sales" type="bar" data={barData} />
             </div>
 
         </div>

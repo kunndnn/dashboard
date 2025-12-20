@@ -59,12 +59,12 @@ const Users = () => {
             <CommonBreadcrumb />
 
             <div className="flex justify-between items-center bg-white dark:bg-black p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800">
-                <h2 className="text-lg font-bold text-gray-800 dark:text-white">All Users</h2>
+                {/* <h2 className="text-lg font-bold text-gray-800 dark:text-white">All Users</h2> */}
                 <CommonInput
                     type="search"
                     placeholder="Search user..."
                     wrapperClass="max-w-xs"
-                    className="!py-2"
+                    className="py-2!"
                 />
             </div>
 
