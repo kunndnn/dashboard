@@ -1,18 +1,38 @@
-import { useNavigate, Link, data } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import CommonInput from "@/components/ui/CommonInput";
 import CommonButton from "@/components/ui/CommonButton";
-import { post } from '../../api.js'
 import { AUTH } from "../../constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthStore } from "@/store/authStore.js";
+import { showError, showSuccess } from "@/utils/toast";
 
 export default function Login() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ email: '', password: '' })
-
+    const login = useAuthStore((s) => s.login);
+    const status = useAuthStore((s) => s.status);
+    const message = useAuthStore((s) => s.message);
     const handleSubmit = (e) => {
         e.preventDefault();
-        // navigate("/dashboard");
+        const { email, password } = formData;
+        login({
+            email,
+            password
+        });
     };
+
+    useEffect(() => {
+        if (status) {
+            showSuccess(message)
+            navigate("/dashboard");
+        }
+    }, [status, navigate]);
+
+    useEffect(() => {
+        if (!status && message) {
+            showError(message);
+        }
+    }, [status, message]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

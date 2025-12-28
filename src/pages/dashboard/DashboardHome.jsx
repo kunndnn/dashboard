@@ -11,6 +11,7 @@ import {
 
 import Graph from "@/components/dashboard/Graph";
 import StatsCard from "@/components/dashboard/StatsCard";
+import { useAuthStore } from "@/store/authStore";
 
 ChartJS.register(
     CategoryScale,
@@ -23,6 +24,8 @@ ChartJS.register(
 );
 
 const DashboardHome = () => {
+    const message = useAuthStore((s) => s.message);
+
 
     // ===== Stats Cards Data =====
     const stats = [

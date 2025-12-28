@@ -1,11 +1,23 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "@/components/layout/DashboardHeader";
 import Footer from "@/components/layout/DashboardFooter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthStore } from "@/store/authStore";
 
 const DashboardLayout = () => {
     const [open, setOpen] = useState(false);
+    const { status } = useAuthStore();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!status) {
+            navigate("/dashboard/login");
+        }
+    }, [status, navigate]);
+
+    if (!status) return null; // Or a loader
+
     return (
         <div className="flex min-h-screen">
             <Sidebar open={open} setOpen={setOpen} />
