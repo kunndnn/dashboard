@@ -8,7 +8,6 @@ export default function DashboardHeader({ setOpen }) {
     const navigate = useNavigate();
     const logout = useAuthStore((s) => s.logout);
     const user = useAuthStore((s) => s.user);
-    console.log({ user })
     const handleLogout = () => {
         logout();
         navigate('/dashboard/login');

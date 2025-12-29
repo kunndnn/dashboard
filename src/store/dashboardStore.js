@@ -13,7 +13,7 @@ export const dashboardData = create(
       set({ loading: true, error: null });
       try {
         const res = await api.get(routes.DASHBOARD);
-        console.log({res});
+        set({data:res?.data?.data})
       } catch (error) {
         set({
           loading: false,

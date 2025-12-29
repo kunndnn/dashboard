@@ -11,7 +11,8 @@ import {
 
 import Graph from "@/components/dashboard/Graph";
 import StatsCard from "@/components/dashboard/StatsCard";
-import { useAuthStore } from "@/store/authStore";
+import { dashboardData } from "@/store/dashboardStore";
+import { useEffect, useMemo } from "react";
 
 ChartJS.register(
     CategoryScale,
@@ -24,16 +25,20 @@ ChartJS.register(
 );
 
 const DashboardHome = () => {
-    const message = useAuthStore((s) => s.message);
-
-
+    const getDashboardData = dashboardData((s) => s.getDashboardData);
+    const data = dashboardData((s) => s.data);
+    useEffect(() => {
+        getDashboardData();
+    }, [])
+    console.log({ data });
     // ===== Stats Cards Data =====
     const stats = [
-        { title: "Total Users", value: "12,450", color: "blue" },
-        { title: "New Orders", value: "1,280", color: "green" },
-        { title: "Revenue", value: "₹4,50,000", color: "purple" },
-        { title: "Pending Tickets", value: "32", color: "orange" },
+        { title: "Total Users", value: data?.userCount ?? 0, color: "blue" },
+        { title: "Active Users", value: data?.activeUserCount ?? 0, color: "green" },
+        { title: "Total Messages", value: data?.chatCount ?? 0, color: "purple" },
     ];
+    const chatStats = useMemo(() => data?.chatStats, [data?.chatStats]);
+    const userStats = useMemo(() => data?.userStats, [data?.userStats]);
 
     // ===== Line Chart Data =====
     const lineData = {
@@ -49,19 +54,6 @@ const DashboardHome = () => {
         ],
     };
 
-    // ===== Bar Chart Data =====
-    const barData = {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-            {
-                label: "Daily Sales",
-                data: [12000, 19000, 15000, 22000, 17000, 25000],
-                backgroundColor: "#10b981",
-                borderRadius: 6,
-            },
-        ],
-    };
-
     return (
         <div className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -72,11 +64,8 @@ const DashboardHome = () => {
 
             {/* CHARTS SECTION */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
-                <Graph title="User Growth" type="line" data={lineData} />
-                <Graph title="Daily Sales" type="bar" data={barData} />
-                <Graph title="Daily Sales" type="bar" data={barData} />
-                <Graph title="Daily Sales" type="bar" data={barData} />
-                <Graph title="Daily Sales" type="bar" data={barData} />
+                <Graph title="User Stats" type="line" data={chatStats} />
+                <Graph title="User Stats" type="bar" data={userStats} />
             </div>
 
         </div>
