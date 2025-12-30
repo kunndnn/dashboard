@@ -4,28 +4,50 @@ import { Bar, Line } from "react-chartjs-2"
 import CommonSelect from '../ui/CommonSelect';
 
 const Graph = ({ title, type, data }) => {
-        // ===== Bar Chart Data =====
-    const barData = {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-            {
-                label: title,
-                data: [12000, 19000, 15000, 22000, 17000, 25000],
-                backgroundColor: "#10b981",
-                borderRadius: 6,
-            },
-        ],
-    };
-    const graphType = (type) => type === 'bar' ? <Bar data={barData} /> : <Line data={barData} />;
-    const [currentDuration, setCurrentDuration] = useState('daily');
+    const graphType = (type) => type === 'bar' ? <Bar data={barData} /> : <Line data={lineData} />;
+    const [currentDuration, setCurrentDuration] = useState('daily');    
     const duration = [
         'daily',
         'weekly',
         'monthly',
         'yearly'
     ];
+
+    // ===== Bar Chart Data =====
+    const barData = useMemo(() =>
+    (
+        {
+            labels: data ? data[currentDuration]?.label : [],
+            datasets: [
+                {
+                    label: title,
+                    data: data ? data[currentDuration]?.values : [],
+                    backgroundColor: "#10b981",
+                    borderRadius: 6,
+                },
+            ],
+        }
+    ), [currentDuration])
+
+    // ===== Line Chart Data =====
+    const lineData =
+        useMemo(() => (
+            {
+                labels: data ? data[currentDuration]?.label : [],
+                datasets: [
+                    {
+                        label: "User Growth",
+                        data: data ? data[currentDuration]?.values : [],
+                        borderColor: "#3b82f6",
+                        backgroundColor: "rgba(59, 130, 246, 0.3)",
+                        tension: 0.4
+                    },
+                ],
+            }
+        ), [currentDuration])
+        
     const options = useMemo(() => (
-        duration?.map((iteration) => ({ label: capitalize(iteration), value: iteration }))
+        duration?.map((iteration) => ({ label: `🗓️ ${capitalize(iteration)}`, value: iteration }))
     ), [duration])
 
     const handleChange = useCallback(setCurrentDuration, []);

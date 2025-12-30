@@ -14,7 +14,7 @@ export const dashboardData = create(
       try {
         const res = await api.get(routes.DASHBOARD);
         set({data:res?.data?.data})
-      } catch (error) {
+      } catch (err) {
         set({
           loading: false,
           error: err?.response?.data?.message || "Failed to load dashboard",
