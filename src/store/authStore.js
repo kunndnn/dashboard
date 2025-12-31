@@ -1,7 +1,7 @@
 // store/authStore.js
 import { create } from "zustand";
 import { devtools, persist, createJSONStorage } from "zustand/middleware";
-import { post } from "../api";
+import { post } from "../config/api";
 import { routes } from "@/constants/routes";
 
 export const useAuthStore = create(
@@ -55,7 +55,6 @@ export const useAuthStore = create(
 
         // LOGOUT
         logout: () => {
-          console.log("called logout");
           localStorage.removeItem("token"); // remove token from storage
 
           set(
@@ -69,6 +68,32 @@ export const useAuthStore = create(
             false,
             "auth/logout"
           );
+        },
+
+        profileUpdate: async (payload) => {
+          set({
+            loading: true,
+            message: null,
+          });
+          try {
+            console.log({payload});
+            const res = await post(routes.PROFILE_UPDATE, payload);
+            const user = res.data;
+            console.log({ user });
+            set({
+              user,
+              status: true,
+              loading: false,
+              message: res.message,
+            });
+          } catch (err) {
+            console.log({ err });
+            set({
+              loading: false,
+              status: false,
+              message: err?.response?.data?.message || "Update failed",
+            });
+          }
         },
       }),
       {

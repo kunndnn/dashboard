@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { X, Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { SIDEBAR } from '@/constants'
+import { SIDEBAR } from '@/config/constants'
 
 const sidebar = [
     { url: '/dashboard', label: "Overview" },

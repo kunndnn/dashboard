@@ -5,9 +5,12 @@ import CommonCard from "@/components/ui/CommonCard";
 import CommonImage from "@/components/ui/CommonImage";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
+import { showError } from "@/utils/toast";
 
 const Profile = () => {
     const user = useAuthStore((s) => s.user);
+    const profileUpdate = useAuthStore((s) => s.profileUpdate);
+    const [imagePreview, setImagePreview] = useState("https://i.pravatar.cc/150");
 
     const [data, setData] = useState({
         name: "",
@@ -15,6 +18,7 @@ const Profile = () => {
         phone: "",
         role: "Admin",
         password: "",
+        image: null,
     });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -40,26 +44,65 @@ const Profile = () => {
 
         setData((prev) => ({
             ...prev,
-            name: user.fullName || "",
-            email: user.email || "",
-            phone: user.phone || "",
+            name: user.fullName ?? "",
+            email: user.email ?? "",
+            phone: user.phone ?? "",
             role: user.role === 0 ? "Admin" : "User",
+            image: user.image
         }));
     }, [user]);
 
+    useEffect(() => {
+        if (!data.image) {
+            setImagePreview("https://i.pravatar.cc/150");
+            return;
+        }
+
+        // image already from server
+        if (typeof data.image === "string") {
+            setImagePreview(data.image);
+            return;
+        }
+
+        // newly selected file
+        if (data.image instanceof File) {
+            const objectUrl = URL.createObjectURL(data.image);
+            setImagePreview(objectUrl);
+
+            return () => URL.revokeObjectURL(objectUrl);
+        }
+    }, [data.image]);
+
     const handleChange = (e) => {
+        const { name, type, value, files } = e.target;
+
+        if (name === 'image') {
+            for (const file of files) {
+                if (!file.type.startsWith('image')) {
+                    showError('Invalid Image file');
+                    e.target.value = null;
+                    return;
+                }
+            }
+        }
+
+        // update input states
         setData((prev) => ({
             ...prev,
-            [e.target.name]: e.target.value,
+            [name]: type === "file" ? files[0] : value,
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Updated Profile:", data);
+        const formData = new FormData();
+        formData.append("name", data.name);
+        // formData.append("email", data.email);
+        formData.append("phone", data.phone);
+        // formData.append("role", data.role);
+        if (data.image) formData.append("image", data.image);
+        profileUpdate(formData);
     };
-
-    const isPasswordVisible = showPassword || autoShow;
 
     return (
         <div className="grid md:grid-cols-2 gap-6">
@@ -67,7 +110,7 @@ const Profile = () => {
             {/* LEFT — PROFILE CARD */}
             <CommonCard className="flex flex-col items-center text-center">
                 <CommonImage
-                    src="https://i.pravatar.cc/150"
+                    src={imagePreview}
                     alt="profile"
                     className="rounded-full w-28 h-28 border shadow"
                 />
@@ -116,6 +159,16 @@ const Profile = () => {
                         value={data.phone}
                         onChange={handleChange}
                         placeholder="Enter phone number"
+                    />
+
+                    <CommonInput
+                        label="Image"
+                        name="image"
+                        onChange={handleChange}
+                        type="file"
+                        placeholder="Select your image"
+                        // multiple
+                        accept="image/*"
                     />
 
                     <CommonInput

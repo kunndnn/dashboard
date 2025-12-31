@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import api from "../api";
+import api from "../config/api";
 import { routes } from "@/constants/routes";
 
 export const dashboardData = create(

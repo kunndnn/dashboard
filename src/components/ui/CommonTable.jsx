@@ -1,4 +1,4 @@
-import { COMMON } from "@/constants";
+import { COMMON } from "@/config/constants";
 
 export default function CommonTable({
     columns,

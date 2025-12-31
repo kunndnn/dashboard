@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import CommonInput from "@/components/ui/CommonInput";
 import CommonButton from "@/components/ui/CommonButton";
-import { AUTH } from "../../constants";
+import { AUTH } from "../../config/constants";
 
 export default function Register() {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import CommonInput from "@/components/ui/CommonInput";
 import CommonButton from "@/components/ui/CommonButton";
-import { AUTH } from "../../constants";
+import { AUTH } from "../../config/constants";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore.js";
 import { showError, showSuccess } from "@/utils/toast";

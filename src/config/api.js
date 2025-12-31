@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authLogout } from "./store/authBridge";
+import { authLogout } from "../store/authBridge";
 // Create axios instance
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
